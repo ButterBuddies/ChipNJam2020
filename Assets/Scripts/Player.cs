@@ -5,16 +5,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Hand hand;
+    private Deck deck;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        hand = GetComponent<Hand>();
+        deck = GameObject.FindGameObjectWithTag("DeckOfCards").GetComponent<Deck>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DrawCard()
     {
-        
+        hand.Add(deck.GetNextCard());
+    }
+
+    public void ShowHand()
+    {
+        hand.Display();
     }
 }

@@ -8,6 +8,12 @@ public class Card : MonoBehaviour
     //sprite or image for the card
     private bool played;
     private bool discarded;
+    public string myName;
+
+    public Card(string newName)
+    {
+        myName = newName;
+    }
 
     public void Play()
     {

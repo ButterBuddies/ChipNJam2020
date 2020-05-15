@@ -3,14 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GamePhaseManager : MonoBehaviour
-{   //maybe make this class static
-
+{
     private StateMachine stateMachine;
     private SetupPhase setupPhase;
     private EnemyPhase enemyPhase;
     private IntermissionPhase intermissionPhase;
 
-    // Start is called before the first frame update
+    public Player player;
+
+    private static GamePhaseManager _instance;
+    public static GamePhaseManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<GamePhaseManager>();
+
+                if (_instance == null)
+                {
+                    GameObject container = new GameObject("GamePhaseManager");
+                    _instance = container.AddComponent<GamePhaseManager>();
+                }
+            }
+
+            return _instance;
+        }
+    }
+
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();
@@ -18,12 +38,13 @@ public class GamePhaseManager : MonoBehaviour
         enemyPhase = GetComponent<EnemyPhase>();
         intermissionPhase = GetComponent<IntermissionPhase>();
 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stateMachine.nextPhase = setupPhase; //set the default phase
     }
 
-    // Update is called once per frame
     void Update()
     {
         stateMachine.UpdateCurrentPhase();
     }
 }
+

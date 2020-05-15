@@ -16,12 +16,15 @@ public class Hand : MonoBehaviour
         card.Play();
     }
 
-    private void Display() //this should make the hand of cards display on the screen, probably to be interactable
+    public void Display() //this should make the hand of cards display on the screen, probably to be interactable
     {
-
+        foreach (Card card in cards)
+        {
+            Debug.Log(card.myName);
+        }
     }
 
-    private void Add(Card card) //this should add a card to the hand
+    public void Add(Card card) //this should add a card to the hand
     {
         cards.Add(card);
     }
