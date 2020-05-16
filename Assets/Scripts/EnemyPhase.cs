@@ -7,6 +7,7 @@ public class EnemyPhase : MonoBehaviour, IGamePhase
     public void Enter()
     {
         Debug.Log("Entered enemy phase");
+        
     }
 
     public void Execute()

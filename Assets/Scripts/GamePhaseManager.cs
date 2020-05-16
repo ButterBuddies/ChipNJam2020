@@ -7,7 +7,10 @@ public class GamePhaseManager : MonoBehaviour
     private StateMachine stateMachine;
     private SetupPhase setupPhase;
     private EnemyPhase enemyPhase;
-    private IntermissionPhase intermissionPhase;
+    private IntermissionPhase buildPhase;
+
+    public int waveCount = 2;
+    private int currentWave = 0;
 
     public Player player;
 
@@ -36,7 +39,7 @@ public class GamePhaseManager : MonoBehaviour
         stateMachine = GetComponent<StateMachine>();
         setupPhase = GetComponent<SetupPhase>();
         enemyPhase = GetComponent<EnemyPhase>();
-        intermissionPhase = GetComponent<IntermissionPhase>();
+        buildPhase = GetComponent<IntermissionPhase>();
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stateMachine.nextPhase = setupPhase; //set the default phase
@@ -45,6 +48,41 @@ public class GamePhaseManager : MonoBehaviour
     void Update()
     {
         stateMachine.UpdateCurrentPhase();
+    }
+
+    public void StartEnemyPhase() //can pass in number of waves maybe? as an int
+    {
+        currentWave++;
+        stateMachine.nextPhase = enemyPhase;
+        //to finished enemy phase for now, use a timer, but in future it will be based on remaining units alive
+        Invoke("StartBuildPhase", 10);
+    }
+
+    public void StartBuildPhase()
+    {
+        if (currentWave >= waveCount)
+        {
+            WonLevel();
+        }
+        else
+        {
+            stateMachine.nextPhase = buildPhase;
+
+        }
+
+    }
+
+    public void WonLevel()
+    {
+        //we won the game! Got through all the waves alive
+        //load the win sequnce or scene or whatever
+        Debug.Log("Won the game! Survived all " + currentWave + " waves!");
+    }
+
+    public void LostLevel()
+    {
+        //should be based on deck HP == 0?
+        Debug.Log("lost the game! Survived up to wave " + currentWave);
     }
 }
 

@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class IntermissionPhase : MonoBehaviour, IGamePhase
 {
+    private int numCardsToDraw = 1;
+    public GameObject finishPhaseBtn;
+
     public void Enter()
     {
-        Debug.Log("Entered intermission phase");
+        finishPhaseBtn.SetActive(true);
+        Debug.Log("Entered build/intermission phase");
+        for (int i = 0; i < numCardsToDraw; i++)
+        {
+            GamePhaseManager.Instance.player.DrawCard();
+        }
+        GamePhaseManager.Instance.player.ShowHand();
     }
 
     public void Execute()
@@ -17,5 +27,6 @@ public class IntermissionPhase : MonoBehaviour, IGamePhase
     public void Exit()
     {
         Debug.Log("Exited intermission phase");
+        finishPhaseBtn.SetActive(false);
     }
 }
