@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Card : MonoBehaviour
@@ -23,6 +24,11 @@ public class Card : MonoBehaviour
     public Card(string newName)
     {
         myName = newName;
+    }
+
+    public void GreyedOut(bool greyed)
+    {
+        GetComponent<Button>().interactable = !greyed;
     }
 
     public void Play()

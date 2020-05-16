@@ -31,26 +31,29 @@ public class Hand : MonoBehaviour
 
         foreach (GameObject card in cards)
         {
-            //if (card.GetComponent<Card>().played)
-            //{
-            //    Discard(card);
-            //}
+            Card cardComponent = card.GetComponent<Card>();
+            if (cardComponent.played)
+            {
+                //Discard(card);
+                card.SetActive(false);
+                continue;
+            }
 
             if (phaseType == "") //display all cards
                 card.SetActive(true);
             else if (phaseType == "Build")
             {
-                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Build)
-                    card.SetActive(true);
+                if (cardComponent.myType == Card.TypesOfCards.Build)
+                    cardComponent.GreyedOut(false);
                 else
-                    card.SetActive(false);
+                    cardComponent.GreyedOut(true);
             }
             else if (phaseType == "Action")
             {
-                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Action)
-                    card.SetActive(true);
+                if (cardComponent.myType == Card.TypesOfCards.Action)
+                    cardComponent.GreyedOut(false);
                 else
-                    card.SetActive(false);
+                    cardComponent.GreyedOut(true);
             }
         }
     }
