@@ -45,6 +45,30 @@ public class Card : MonoBehaviour
                             obj.transform.localScale = new Vector3(1, 1, 1);
                         }
                         break;
+                    case "Lawn Fertilizer":
+                        EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
+                        foreach (EnemyMovement em in enemyMoves)
+                        {
+                            em.moveSpeedMultiplier = 0.8f;
+                        }
+                        FindObjectOfType<Spawner>().globalMoveSpeedMultiplier = 0.8f;
+                        return;
+
+                    case "LiquidNitrogen":
+                        StartCoroutine("Freeze");
+                        return;
+
+                    case "Incecticide":
+                        Sprinkler[] sprinklers = FindObjectsOfType<Sprinkler>();
+                        if (sprinklers.Length > 0)
+                        {
+                            foreach (Sprinkler s in sprinklers)
+                            {
+                                s.damageMultiplier = 2;
+                            }
+                        }
+                        FindObjectOfType<GamePhaseManager>().damageMultiplier = 2;
+                        return;
 
                     case null:
                         Debug.Log("Invalid card type");
@@ -78,5 +102,20 @@ public class Card : MonoBehaviour
     {
         GetComponent<Button>().interactable = !greyed;
     }
+
+    IEnumerator Freeze()
+    {
+        EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
+        foreach (EnemyMovement em in enemyMoves)
+        {
+            em.moveSpeedMultiplier = 0f;
+        }
+        yield return new WaitForSeconds(5f);
+        foreach (EnemyMovement em in enemyMoves)
+        {
+            em.moveSpeedMultiplier = 0.8f;
+        }
+    }
+
 
 }

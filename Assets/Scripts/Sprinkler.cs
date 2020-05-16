@@ -9,6 +9,12 @@ public class Sprinkler : MonoBehaviour
     EnemyMovement collider;
     public float attackSpeed = 1;
     public int attackDamage = 5;
+    public int damageMultiplier=1;
+
+    private void Start()
+    {
+        damageMultiplier = FindObjectOfType<GamePhaseManager>().damageMultiplier;
+    }
 
     IEnumerator Attack()
     {
@@ -17,7 +23,7 @@ public class Sprinkler : MonoBehaviour
         {
             if (enemy == null)
                 yield break;
-            enemy.DecrementHealth(attackDamage);
+            enemy.DecrementHealth(attackDamage*damageMultiplier);
             yield return new WaitForSeconds(attackSpeed);
         }
     }

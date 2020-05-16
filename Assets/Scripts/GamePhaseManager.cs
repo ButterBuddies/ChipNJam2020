@@ -12,6 +12,8 @@ public class GamePhaseManager : MonoBehaviour
     public int waveCount = 2;
     private int currentWave = 0;
 
+    public int damageMultiplier = 1;
+
     public Player player;
     private Health patioHealth;
 
