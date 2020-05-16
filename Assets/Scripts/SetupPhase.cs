@@ -10,7 +10,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
     public void Enter()
     {
         finishPhaseBtn.SetActive(true);
-        Debug.Log("Entered setup phase");
+        //Debug.Log("Entered setup phase");
         //deal player 7 cards
         for (int i = 0; i < numCardsToDraw; i++)
         {
