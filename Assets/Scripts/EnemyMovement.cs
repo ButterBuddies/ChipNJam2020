@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     bool coRoutineActive = false;
     public float tempMoveSpeed = 0;
     public float maxMoveSpeed = 1;
+    public float moveSpeedMultiplier = 1;
     public int attackDamage = 5;
     public float attackSpeed = 2;
     public float health = 5;
@@ -34,7 +35,8 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * Time.deltaTime * tempMoveSpeed);
+        
+        transform.Translate(direction * Time.deltaTime * (tempMoveSpeed*moveSpeedMultiplier));
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

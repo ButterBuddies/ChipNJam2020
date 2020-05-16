@@ -9,7 +9,7 @@ public class Deck : MonoBehaviour
     private int maxNumOfCards = 30;
     public List<GameObject> listOfCardPrefabs = new List<GameObject>();
     public List<int> numberOfEach = new List<int>();
-    public GameObject deckPanel;
+
 
     public GameObject selectedCard;
 
@@ -39,7 +39,7 @@ public class Deck : MonoBehaviour
        // MakeRandomDeck();
     }
 
-    public void MakeRandomDeck()
+    public void MakeRandomDeck(Transform transform)
     {
         
         for (int i = 0; i < maxNumOfCards; i++)
@@ -47,14 +47,14 @@ public class Deck : MonoBehaviour
             GameObject newCard = Instantiate(listOfCardPrefabs[Random.Range(0, listOfCardPrefabs.Count)]);
             cardsInDeck.Add(newCard);
             newCard.SetActive(true);
-            newCard.transform.SetParent(deckPanel.transform);
+            newCard.transform.SetParent(transform);
             newCard.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
    public void MakeDeck(Transform transform)
     {
-        for(int i = 0; i < listOfCardPrefabs.Count - 1; i++)
+        for(int i = 0; i < listOfCardPrefabs.Count; i++)
         {
             for (int j = 0; j < numberOfEach[i]; j++)
             {
@@ -106,7 +106,7 @@ public class Deck : MonoBehaviour
             string cardName = selectedCard.GetComponent<Card>().myName;
             while (searching)
             {
-                if (i < listOfCardPrefabs.Count - 1)
+                if (i < listOfCardPrefabs.Count)
                 {
                     if (listOfCardPrefabs[i].GetComponent<Card>().myName == cardName)
                     {

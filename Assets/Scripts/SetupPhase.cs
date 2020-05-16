@@ -6,9 +6,14 @@ public class SetupPhase : MonoBehaviour, IGamePhase
 {
     private int numCardsToDraw = 7;
     public GameObject finishPhaseBtn;
+    public GameObject deckPanel;
 
     public void Enter()
     {
+        Deck deck = FindObjectOfType<Deck>();
+        deck.MakeDeck(deckPanel.transform);
+        deck.Shuffle();
+
         finishPhaseBtn.SetActive(true);
         //Debug.Log("Entered setup phase");
         //deal player 7 cards

@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
     public int spawnerWidth = 6;
     public bool doneSpawning = false;
 
+    public float globalMoveSpeedMultiplier =1f;
+
     public Stack<EnemyMovement> attackerSpawnList;
     GameObject house;
 
@@ -64,7 +66,8 @@ public class Spawner : MonoBehaviour
 
         float spawnPosX = Random.Range(transform.position.x - spawnerWidth, transform.position.x + spawnerWidth);
 
-        Instantiate(attackerSpawnList.Pop(), new Vector3(spawnPosX, transform.position.y, 0), transform.rotation, transform);
+       EnemyMovement attacker = Instantiate(attackerSpawnList.Pop(), new Vector3(spawnPosX, transform.position.y, 0), transform.rotation, transform);
+        attacker.moveSpeedMultiplier = globalMoveSpeedMultiplier;
     }
 
     public void GenerateSpawnList()
