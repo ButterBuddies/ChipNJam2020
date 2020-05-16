@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
 
-    public int health = 100;
-
+    public int health;
 
     public void DecrementHealth(int damage)
     {
@@ -16,5 +15,4 @@ public class DeckHealth : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
 }
