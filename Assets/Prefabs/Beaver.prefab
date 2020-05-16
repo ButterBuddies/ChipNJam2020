@@ -87,3 +87,4 @@ MonoBehaviour:
   maxMoveSpeed: 1.5
   attackDamage: 15
   attackSpeed: 3
+  health: 20

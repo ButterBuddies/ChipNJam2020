@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public float maxMoveSpeed = 1;
     public int attackDamage = 5;
     public float attackSpeed = 2;
+    public float health = 5;
 
     private void Awake()
     {
@@ -39,7 +40,6 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator Attack()
     {
-        Debug.Log("Starting Co-routine");
         Health deckHealth = house.GetComponent<Health>();
         tempMoveSpeed = 0;
 

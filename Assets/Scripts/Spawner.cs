@@ -4,30 +4,85 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] List<EnemyMovement> attackerPrefabList;
+    public List<EnemyMovement> attackerPrefabList;
     public float minSpawnDelay = 1f;
     public float maxSpawnDelay = 2f;
+
+    public int numTermites = 0;
+    public int numBeetles = 0;
+    public int numBeavers = 0;
+    public int numBears = 0;
 
     public int spawnerWidth = 6;
     bool spawn = true;
 
+    public Stack<EnemyMovement> attackerSpawnList;
     GameObject house;
 
-    private void Awake()
+    public void Awake()
     {
+        //attackerPrefabList = new List<EnemyMovement>();
+        attackerSpawnList = new Stack<EnemyMovement>();
         house = GameObject.FindGameObjectWithTag("House");
+        GenerateSpawnList();
+    }
+
+    IEnumerator Start()
+    {
+        while (spawn)
+        {
+            if (!house.activeSelf || attackerSpawnList.Count == 0)
+            {
+                yield break;
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                SpawnAttacker();
+            }
+        }
     }
 
     private void SpawnAttacker()
     {
         float spawnPosX = Random.Range(transform.position.x - spawnerWidth, transform.position.x + spawnerWidth);
-        Instantiate(ChooseAttacker(), new Vector3(spawnPosX, transform.position.y, 0), transform.rotation, transform);
+
+        Instantiate(attackerSpawnList.Pop(), new Vector3(spawnPosX, transform.position.y, 0), transform.rotation, transform);
     }
 
-    private EnemyMovement ChooseAttacker()
+    public void GenerateSpawnList()
+    {
+
+        while(numTermites != 0 || numBeetles !=0 || numBeavers !=0 || numBears !=0)
+        {
+            int randomNum = Random.Range(0, 4);
+
+            if(randomNum == 0 && numTermites != 0)
+            {
+                numTermites--;
+                attackerSpawnList.Push(attackerPrefabList[0]);
+            }
+            if (randomNum == 1 && numBeetles != 0)
+            {
+                numBeetles--;
+                attackerSpawnList.Push(attackerPrefabList[1]);
+            }
+            if (randomNum == 2 && numBeavers != 0)
+            {
+                numBeavers--;
+                attackerSpawnList.Push(attackerPrefabList[2]);
+            }
+            if (randomNum == 3 && numBears != 0)
+            {
+                numBears--;
+                attackerSpawnList.Push(attackerPrefabList[3]);
+            }
+        }
+    }
+
+    private EnemyMovement RandomAttacker()
     {
         int randomNumber = Random.Range(0, 100);
-        Debug.Log(randomNumber);
         if(randomNumber < 1)
         {
             return attackerPrefabList[3];
@@ -46,21 +101,5 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    IEnumerator Start()
-    {
-
-        while (spawn)
-        {
-            if (!house.activeSelf)
-            {
-                Debug.Log("Break");
-                yield break;
-            }
-            else
-            {
-                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                SpawnAttacker();
-            }
-        }
-    }
+    
 }
