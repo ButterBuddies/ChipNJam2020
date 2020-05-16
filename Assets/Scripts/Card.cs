@@ -16,6 +16,12 @@ public class Card : MonoBehaviour
     private bool discarded;
     public string myName;
     bool selected = false;
+    private GameObject theMainCanvas;
+
+    public void Start()
+    {
+        theMainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+    }
 
     public Card(string newName)
     {
@@ -31,11 +37,14 @@ public class Card : MonoBehaviour
             {
                 switch (myName)
                 {
-                    case "PorchFlower":
+                    case "Sprinkler":
                         if (placedPiece != null)
                         {
+                            GameObject obj = Instantiate(placedPiece);
+                            obj.transform.parent = theMainCanvas.transform;
+                            obj.transform.localScale = new Vector3(1, 1, 1);
                         }
-                        return;
+                        break;
 
                     case null:
                         Debug.Log("Invalid card type");
@@ -63,6 +72,11 @@ public class Card : MonoBehaviour
         {
             FindObjectOfType<Deck>().selectedCard = null;
         }
+    }
+
+    public void GreyedOut(bool greyed)
+    {
+        GetComponent<Button>().interactable = !greyed;
     }
 
 }
