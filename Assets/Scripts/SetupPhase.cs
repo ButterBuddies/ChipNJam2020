@@ -21,7 +21,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
 
     public void Execute()
     {
-        Debug.Log("Executed setup phase");
+        //Debug.Log("Executed setup phase");
     }
 
     public void Exit()
