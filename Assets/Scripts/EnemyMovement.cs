@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public int attackDamage = 5;
     public float attackSpeed = 2;
     public float health = 5;
+    public int scorePoints = 0;
     private Health objectToAttack;
 
     private void Awake()
@@ -58,8 +59,9 @@ public class EnemyMovement : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            scoreManager.IncrementScore(scorePoints);
             Destroy(gameObject);
-            //IncrementScore
         }
     }
 }

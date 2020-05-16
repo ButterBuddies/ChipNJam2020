@@ -89,6 +89,7 @@ MonoBehaviour:
   attackDamage: 5
   attackSpeed: 2
   health: 10
+  scorePoints: 10
 --- !u!61 &-2334651107865910959
 BoxCollider2D:
   m_ObjectHideFlags: 0
