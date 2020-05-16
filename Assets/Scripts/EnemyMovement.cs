@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public int attackDamage = 5;
     public float attackSpeed = 2;
     public float health = 5;
+    private Health objectToAttack;
 
     private void Awake()
     {
@@ -27,29 +28,46 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(house.transform.position.y - gameObject.transform.position.y < 0.5f && house.activeSelf && !coRoutineActive)
-        {
-            StartCoroutine("Attack");
-            coRoutineActive = true;
-        }
-        else
-        {
+        //if(house.transform.position.y - gameObject.transform.position.y < 0.5f && house.activeSelf && !coRoutineActive)
+        //{
+        //    StartCoroutine("Attack");
+        //    coRoutineActive = true;
+        //}
+        //else
+        //{
             transform.Translate(direction * Time.deltaTime * tempMoveSpeed);
-        }
+        //}
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        objectToAttack = collision.gameObject.GetComponent<Health>();
+        if(objectToAttack != null)
+            StartCoroutine("Attack");
     }
 
     IEnumerator Attack()
     {
-        Health deckHealth = house.GetComponent<Health>();
+        
         tempMoveSpeed = 0;
 
-        while (deckHealth.health > 0)
+        while (objectToAttack.health > 0 && objectToAttack != null)
         {
+            objectToAttack.DecrementHealth(attackDamage);
+            if (objectToAttack.GetComponent<Flower>())
+                DecrementHealth(5);
             yield return new WaitForSeconds(attackSpeed);
-            if (deckHealth == null)
-                yield break;
-            deckHealth.DecrementHealth(attackDamage);
         }
         tempMoveSpeed = maxMoveSpeed;
+    }
+
+    public void DecrementHealth(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            //IncrementScore
+        }
     }
 }
