@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
         hand.Add(deck.GetNextCard());
     }
 
-    public void ShowHand()
+    public void ShowHand(string phaseType)
     {
-        hand.Display();
+        hand.Display(phaseType);
     }
 }

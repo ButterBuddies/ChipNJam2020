@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
-    private List<Card> cards = new List<Card>();
+    private List<GameObject> cards = new List<GameObject>();
     public GameObject handPanel;
     public GameObject cardPrefab;
 
-    private void Discard(Card card) //this should remove/discard a card from the hand
+    private void Discard(GameObject card) //this should remove/discard a card from the hand
     {
         cards.Remove(card);
+        //Destroy(card.gameObject);
     }
 
     private void Play(Card card) //this should play a card from the hand
@@ -20,34 +21,46 @@ public class Hand : MonoBehaviour
         card.Play();
     }
 
-    public void Display() //this should make the hand of cards display on the screen, probably to be interactable
+    public void Display(string phaseType) //this should make the hand of cards display on the screen, probably to be interactable
     {
-        foreach (Transform child in handPanel.transform) //clear out the old hand //prob not very efficient :(
-        {
-            Destroy(child.gameObject);
-        }
 
         if (!handPanel.activeInHierarchy)
         {
             handPanel.SetActive(true);
         }
 
-        foreach (Card card in cards)
+        foreach (GameObject card in cards)
         {
-            //Debug.Log(card.myName);
-            GameObject cardObj = Instantiate(cardPrefab);
-            cardObj.SetActive(true);
-            cardObj.transform.parent = handPanel.transform;
-            cardObj.transform.localScale = new Vector3(1, 1, 1);
-            cardObj.GetComponentInChildren<Text>().text = card.myName;
-            cardObj.GetComponent<Button>().onClick.SetPersistentListenerState(0, UnityEngine.Events.UnityEventCallState.Off);
-            cardObj.GetComponent<Button>().onClick.AddListener(delegate { card.Play(); });
+            //if (card.GetComponent<Card>().played)
+            //{
+            //    Discard(card);
+            //}
+
+            if (phaseType == "") //display all cards
+                card.SetActive(true);
+            else if (phaseType == "Build")
+            {
+                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Build)
+                    card.SetActive(true);
+                else
+                    card.SetActive(false);
+            }
+            else if (phaseType == "Action")
+            {
+                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Action)
+                    card.SetActive(true);
+                else
+                    card.SetActive(false);
+            }
         }
     }
 
-    public void Add(Card card) //this should add a card to the hand
+    public void Add(GameObject newCard) //this should add a card to the hand
     {
-        cards.Add(card);
+        cards.Add(newCard);
+        newCard.SetActive(true);
+        newCard.transform.parent = handPanel.transform;
+        newCard.transform.localScale = new Vector3(1, 1, 1);
     }
     
 }

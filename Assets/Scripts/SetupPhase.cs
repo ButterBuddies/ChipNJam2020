@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetupPhase : MonoBehaviour, IGamePhase
 {
-    private int numCardsToDraw = 3;
+    private int numCardsToDraw = 7;
     public GameObject finishPhaseBtn;
 
     public void Enter()
@@ -16,7 +16,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
         {
             GamePhaseManager.Instance.player.DrawCard();
         }
-        GamePhaseManager.Instance.player.ShowHand();
+        GamePhaseManager.Instance.player.ShowHand("Build");
     }
 
     public void Execute()
