@@ -13,6 +13,12 @@ public class Card : MonoBehaviour
     public bool played;
     private bool discarded;
     public string myName;
+    private GameObject theMainCanvas;
+
+    public void Start()
+    {
+        theMainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+    }
 
     public Card(string newName)
     {
@@ -26,18 +32,21 @@ public class Card : MonoBehaviour
 
             switch (myName)
             {
-                case "PorchFlower":
+                case "Sprinkler":
                     if (placedPiece != null)
                     {
-                        GameObject wep = FindObjectOfType<WeaponCollection>().gameObject;
-                        Instantiate(placedPiece, wep.transform);
+                        //GameObject wep = FindObjectOfType<WeaponCollection>().gameObject;
+                        GameObject obj = Instantiate(placedPiece);
+                        obj.transform.parent = theMainCanvas.transform;
+                        obj.transform.localScale = new Vector3(1, 1, 1);
                     }
-                    return;
-
+                    //return;
+                    break;
                 case null:
                     Debug.Log("Invalid card type");
                     return;
             }
+
             Debug.Log(myName + " card got played");
             played = true;
             gameObject.SetActive(false);

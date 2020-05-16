@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Spawner
   - Patio
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

@@ -47,9 +47,9 @@ public class Spawner : MonoBehaviour
     {
         doneSpawning = false;
         numTermites = 10;
-        numBeetles = 1;
-        numBeavers = 1;
-        numBears = 1;
+        numBeetles = 3;
+        numBeavers = 0;
+        numBears = 0;
         GenerateSpawnList();
     }
 

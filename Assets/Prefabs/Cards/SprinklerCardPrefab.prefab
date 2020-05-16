@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 1
+  placedPiece: {fileID: 8971386856781494144, guid: 5e5fb368fd6384742b9fe1fccea25346,
+    type: 3}
   played: 0
   myName: Sprinkler
 --- !u!1 &4924721926021783511
