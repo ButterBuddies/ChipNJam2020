@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EnemyMovement : MonoBehaviour
     public float health = 5;
     public int scorePoints = 0;
     private Health objectToAttack;
+    RawImage enemyImage;
+    Color defaultColor;
 
     private void Awake()
     {
@@ -24,6 +27,8 @@ public class EnemyMovement : MonoBehaviour
         direction = house.transform.position - spawner.transform.position;
         direction.Normalize();
         tempMoveSpeed = maxMoveSpeed;
+        enemyImage = gameObject.GetComponent<RawImage>();
+        defaultColor = enemyImage.color;
     }
 
     // Update is called once per frame
@@ -57,11 +62,20 @@ public class EnemyMovement : MonoBehaviour
     public void DecrementHealth(int amount)
     {
         health -= amount;
+        StartCoroutine("FlashHurt");
         if (health <= 0)
         {
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
             scoreManager.IncrementScore(scorePoints);
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator FlashHurt()
+    {
+        enemyImage.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        enemyImage.color = defaultColor;
+        yield break;
     }
 }
