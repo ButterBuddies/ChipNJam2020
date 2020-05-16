@@ -89,16 +89,42 @@ public class Deck : MonoBehaviour
     
     public void CleanUp()
     {
+        /*
         cardsInDeck = new List<GameObject>();
         discardDeck = new List<GameObject>(); 
+        */
     }
 
     public void EditDeck(bool add)
     {
         if (selectedCard != null)
         {
-            Debug.Log(listOfCardPrefabs.IndexOf(selectedCard));
-            int index = listOfCardPrefabs.IndexOf(selectedCard);
+            //int index = listOfCardPrefabs.IndexOf(selectedCard);
+            int index=0;
+            bool searching = true;
+            int i = 0;
+            string cardName = selectedCard.GetComponent<Card>().myName;
+            while (searching)
+            {
+                if (i < listOfCardPrefabs.Count - 1)
+                {
+                    if (listOfCardPrefabs[i].GetComponent<Card>().myName == cardName)
+                    {
+                        searching = false;
+                        index = i;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                else
+                {
+                    Debug.Log("card was not found");
+                    searching = false;
+                    return;
+                }
+            }
             int number = 0;
             if (add)
             {
