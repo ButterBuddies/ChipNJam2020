@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    private List<GameObject> cards = new List<GameObject>();
+    private List<GameObject> cardsInDeck = new List<GameObject>();
+    private List<GameObject> discardDeck = new List<GameObject>();
     private int maxNumOfCards = 30;
     public List<GameObject> listOfCardPrefabs = new List<GameObject>();
+    public List<int> numberOfEach = new List<int>();
     public GameObject deckPanel;
+
+    private void Awake()
+    {
+        Deck[] obj = FindObjectsOfType<Deck>();
+        if (obj.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Start()
     { //just adding a bunch of cards for now, will setup a initialize deck later
@@ -30,22 +43,88 @@ public class Deck : MonoBehaviour
         for (int i = 0; i < maxNumOfCards; i++)
         {
             GameObject newCard = Instantiate(listOfCardPrefabs[Random.Range(0, listOfCardPrefabs.Count)]);
-            cards.Add(newCard);
+            cardsInDeck.Add(newCard);
             newCard.SetActive(true);
             newCard.transform.parent = deckPanel.transform;
             newCard.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
+   public void MakeDeck(Transform transform)
+    {
+        for(int i = 0; i < listOfCardPrefabs.Count - 1; i++)
+        {
+            for (int j = 0; j < numberOfEach[i]; j++)
+            {
+                GameObject newCard = Instantiate(listOfCardPrefabs[i]);
+                cardsInDeck.Add(newCard);
+                newCard.SetActive(true);
+                newCard.transform.parent = transform;
+                newCard.transform.localScale = new Vector3(1, 1, 1);
+            }          
+        }
+    }
+
     public void Shuffle() //should shuffle the deck of cards (randomly re order)
     {
+        if (discardDeck.Count != 0)
+        {
+            foreach (GameObject obj in discardDeck)
+            {
+                cardsInDeck.Add(obj);
+            }
+        }
+        discardDeck = new List<GameObject>();
+        for(int i= 0; i < cardsInDeck.Count-1; i++)
+        {
+            int randomIndex = Random.Range(i, cardsInDeck.Count);
+            GameObject tempObj = cardsInDeck[randomIndex];
+            cardsInDeck[randomIndex] = cardsInDeck[i];
+            cardsInDeck[i] = tempObj;
+        }
+        
+    }
+    
+    public void CleanUp()
+    {
+        cardsInDeck = new List<GameObject>();
+        discardDeck = new List<GameObject>(); 
+    }
+
+    public void EditDeck(bool add, GameObject card)
+    {
+        int index = listOfCardPrefabs.IndexOf(card);
+        int number=0;
+        if (add)
+        {
+            if (numberOfEach[index] < 4)
+            {
+                number = 1;
+                Instantiate(card, card.transform.parent);
+            }
+            else
+            {
+                Debug.Log("Too many of this card in deck");
+            }
+        }
+        else if(numberOfEach[index]>0)
+        {
+            number = -1;
+            card.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("No type of this card in deck");
+        }
+        numberOfEach[index] += number;
         
     }
 
     public GameObject GetNextCard()
     {
-        GameObject nextCard = cards[0];
-        cards.Remove(nextCard);
+        GameObject nextCard = cardsInDeck[0];
+        discardDeck.Add(cardsInDeck[0]);
+        cardsInDeck.Remove(nextCard);
         return nextCard;
     }
     
