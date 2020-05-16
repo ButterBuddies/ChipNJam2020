@@ -45,6 +45,7 @@ public class Card : MonoBehaviour
                         GameObject obj = Instantiate(placedPiece);
                         obj.transform.parent = theMainCanvas.transform;
                         obj.transform.localScale = new Vector3(1, 1, 1);
+
                     }
                     //return;
                     break;
