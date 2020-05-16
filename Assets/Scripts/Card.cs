@@ -29,8 +29,8 @@ public class Card : MonoBehaviour
                 case "PorchFlower":
                     if (placedPiece != null)
                     {
-                        GameObject wep = FindObjectOfType<WeaponCollection>().gameObject;
-                        Instantiate(placedPiece, wep.transform);
+                        //GameObject wep = FindObjectOfType<WeaponCollection>().gameObject;
+                        //Instantiate(placedPiece, wep.transform);
                     }
                     return;
 
