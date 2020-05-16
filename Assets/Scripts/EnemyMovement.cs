@@ -4,42 +4,52 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] GameObject housePos;
-    [SerializeField] Transform enemySpawnPos;
 
+    GameObject house;
+    Spawner spawner;
     Vector2 direction;
-    int moveSpeed = 1;
-    int attackDamage = 20;
-    GameObject colliderObject;
+    bool coRoutineActive = false;
+    public float tempMoveSpeed = 0;
+    public float maxMoveSpeed = 1;
+    public int attackDamage = 5;
+    public float attackSpeed = 2;
 
     private void Awake()
     {
-        direction = housePos.transform.position - enemySpawnPos.position;
+        house = GameObject.FindGameObjectWithTag("House");
+        spawner = FindObjectOfType<Spawner>();
+        direction = house.transform.position - spawner.transform.position;
         direction.Normalize();
+        tempMoveSpeed = maxMoveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(housePos.transform.position.y - gameObject.transform.position.y < 1f && housePos.active)
+        if(house.transform.position.y - gameObject.transform.position.y < 0.5f && house.activeSelf && !coRoutineActive)
         {
             StartCoroutine("Attack");
+            coRoutineActive = true;
         }
         else
         {
-            transform.Translate(direction * Time.deltaTime * moveSpeed);
+            transform.Translate(direction * Time.deltaTime * tempMoveSpeed);
         }
     }
 
     IEnumerator Attack()
     {
-        DeckHealth deckHealth = housePos.GetComponent<DeckHealth>();
-        moveSpeed = 0;
+        Debug.Log("Starting Co-routine");
+        Health deckHealth = house.GetComponent<Health>();
+        tempMoveSpeed = 0;
+
         while (deckHealth.health > 0)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(attackSpeed);
+            if (deckHealth == null)
+                yield break;
             deckHealth.DecrementHealth(attackDamage);
         }
-        moveSpeed = 1;
+        tempMoveSpeed = maxMoveSpeed;
     }
 }
