@@ -11,6 +11,8 @@ public class Deck : MonoBehaviour
     public List<int> numberOfEach = new List<int>();
     public GameObject deckPanel;
 
+    public GameObject selectedCard;
+
     private void Awake()
     {
         Deck[] obj = FindObjectsOfType<Deck>();
@@ -34,7 +36,7 @@ public class Deck : MonoBehaviour
         //cards.Add(new Card("h"));
         //cards.Add(new Card("i"));
         //cards.Add(new Card("j"));
-        MakeRandomDeck();
+       // MakeRandomDeck();
     }
 
     public void MakeRandomDeck()
@@ -45,7 +47,7 @@ public class Deck : MonoBehaviour
             GameObject newCard = Instantiate(listOfCardPrefabs[Random.Range(0, listOfCardPrefabs.Count)]);
             cardsInDeck.Add(newCard);
             newCard.SetActive(true);
-            newCard.transform.parent = deckPanel.transform;
+            newCard.transform.SetParent(deckPanel.transform);
             newCard.transform.localScale = new Vector3(1, 1, 1);
         }
     }
@@ -59,7 +61,7 @@ public class Deck : MonoBehaviour
                 GameObject newCard = Instantiate(listOfCardPrefabs[i]);
                 cardsInDeck.Add(newCard);
                 newCard.SetActive(true);
-                newCard.transform.parent = transform;
+                newCard.transform.SetParent(transform);
                 newCard.transform.localScale = new Vector3(1, 1, 1);
             }          
         }
@@ -91,33 +93,44 @@ public class Deck : MonoBehaviour
         discardDeck = new List<GameObject>(); 
     }
 
-    public void EditDeck(bool add, GameObject card)
+    public void EditDeck(bool add)
     {
-        int index = listOfCardPrefabs.IndexOf(card);
-        int number=0;
-        if (add)
+        if (selectedCard != null)
         {
-            if (numberOfEach[index] < 4)
+            Debug.Log(listOfCardPrefabs.IndexOf(selectedCard));
+            int index = listOfCardPrefabs.IndexOf(selectedCard);
+            int number = 0;
+            if (add)
             {
-                number = 1;
-                Instantiate(card, card.transform.parent);
+                if (numberOfEach[index] < 4)
+                {
+                    number = 1;
+                    Instantiate(selectedCard, selectedCard.transform.parent);
+                }
+                else
+                {
+                    Debug.Log("Too many of this card in deck");
+                }
+                selectedCard.GetComponent<Card>().Select();
+            }
+            else if (numberOfEach[index] > 0)
+            {
+                number = -1;
+                selectedCard.SetActive(false);
             }
             else
             {
-                Debug.Log("Too many of this card in deck");
+                Debug.Log("No type of this card in deck");
+                selectedCard.SetActive(false);
             }
-        }
-        else if(numberOfEach[index]>0)
-        {
-            number = -1;
-            card.SetActive(false);
+            numberOfEach[index] += number;
         }
         else
         {
-            Debug.Log("No type of this card in deck");
+            Debug.Log("No card selected");
         }
-        numberOfEach[index] += number;
-        
+   
+
     }
 
     public GameObject GetNextCard()
