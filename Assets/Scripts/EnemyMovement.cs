@@ -28,15 +28,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(house.transform.position.y - gameObject.transform.position.y < 0.5f && house.activeSelf && !coRoutineActive)
-        //{
-        //    StartCoroutine("Attack");
-        //    coRoutineActive = true;
-        //}
-        //else
-        //{
-            transform.Translate(direction * Time.deltaTime * tempMoveSpeed);
-        //}
+        transform.Translate(direction * Time.deltaTime * tempMoveSpeed);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
