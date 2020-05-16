@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SetupPhase : MonoBehaviour, IGamePhase
 {
-    private int numCardsToDraw = 7;
+    private int numCardsToDraw = 3;
+    public GameObject finishPhaseBtn;
 
     public void Enter()
     {
+        finishPhaseBtn.SetActive(true);
         Debug.Log("Entered setup phase");
         //deal player 7 cards
         for (int i = 0; i < numCardsToDraw; i++)
@@ -25,6 +27,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
     public void Exit()
     {
         Debug.Log("Exited setup phase");
+        finishPhaseBtn.SetActive(false);
     }
 
 }

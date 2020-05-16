@@ -17,7 +17,9 @@ public class Card : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("card got played!!??!?!?!");
+        Debug.Log(myName + " card got played!!??!");
+        //should remove this card from the player hand, now that it has been used?
+        
     }
 
 }
