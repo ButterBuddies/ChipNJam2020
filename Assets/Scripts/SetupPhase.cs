@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetupPhase : MonoBehaviour, IGamePhase
 {
-    private int numCardsToDraw = 3;
+    private int numCardsToDraw = 7;
     public GameObject finishPhaseBtn;
 
     public void Enter()

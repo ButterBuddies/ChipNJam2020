@@ -6,7 +6,7 @@ public class Card : MonoBehaviour
 {
     enum type {Action, Build}; //represents a card type
     //sprite or image for the card
-    private bool played;
+    public bool played;
     private bool discarded;
     public string myName;
 
@@ -17,9 +17,11 @@ public class Card : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log(myName + " card got played!!??!");
+        Debug.Log(myName + " card got played");
+        played = true;
+        gameObject.SetActive(false);
         //should remove this card from the player hand, now that it has been used?
-        
+
     }
 
 }
