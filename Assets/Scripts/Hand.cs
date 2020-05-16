@@ -21,33 +21,38 @@ public class Hand : MonoBehaviour
         card.Play();
     }
 
-    public void Display() //this should make the hand of cards display on the screen, probably to be interactable
+    public void Display(string phaseType) //this should make the hand of cards display on the screen, probably to be interactable
     {
-        //foreach (Transform child in handPanel.transform) //clear out the old hand //prob not very efficient :(
-        //{
-        //    Destroy(child.gameObject);
-        //}
 
         if (!handPanel.activeInHierarchy)
         {
             handPanel.SetActive(true);
         }
 
-        //foreach (GameObject card in cards)
-        //{
-        //    if (card.GetComponent<Card>().played)
-        //    {
-        //        Discard(card);
-        //    }
+        foreach (GameObject card in cards)
+        {
+            //if (card.GetComponent<Card>().played)
+            //{
+            //    Discard(card);
+            //}
 
-        //    //GameObject cardObj = Instantiate(cardPrefab);
-        //    //cardObj.SetActive(true);
-        //    //cardObj.transform.parent = handPanel.transform;
-        //    //cardObj.transform.localScale = new Vector3(1, 1, 1);
-        //    ////cardObj.GetComponentInChildren<Text>().text = card.myName;
-        //    //cardObj.GetComponent<Button>().onClick.SetPersistentListenerState(0, UnityEngine.Events.UnityEventCallState.Off);
-        //    //cardObj.GetComponent<Button>().onClick.AddListener(delegate { card.Play(); });
-        //}
+            if (phaseType == "") //display all cards
+                card.SetActive(true);
+            else if (phaseType == "Build")
+            {
+                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Build)
+                    card.SetActive(true);
+                else
+                    card.SetActive(false);
+            }
+            else if (phaseType == "Action")
+            {
+                if (card.GetComponent<Card>().myType == Card.TypesOfCards.Action)
+                    card.SetActive(true);
+                else
+                    card.SetActive(false);
+            }
+        }
     }
 
     public void Add(GameObject newCard) //this should add a card to the hand

@@ -16,7 +16,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
         {
             GamePhaseManager.Instance.player.DrawCard();
         }
-        GamePhaseManager.Instance.player.ShowHand();
+        GamePhaseManager.Instance.player.ShowHand("Build");
     }
 
     public void Execute()

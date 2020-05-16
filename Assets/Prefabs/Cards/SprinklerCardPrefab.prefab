@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd794b979edc914cadfb4cf327883c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 1
+  played: 0
   myName: Sprinkler
 --- !u!1 &4924721926021783511
 GameObject:

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    enum type {Action, Build}; //represents a card type
+    public enum TypesOfCards {Action, Build}; //represents a card type
+    public TypesOfCards myType; 
     //sprite or image for the card
     public bool played;
     private bool discarded;
