@@ -21,7 +21,7 @@ public class IntermissionPhase : MonoBehaviour, IGamePhase
 
     public void Execute()
     {
-        Debug.Log("Executed intermission phase");
+        //Debug.Log("Executed intermission phase");
     }
 
     public void Exit()

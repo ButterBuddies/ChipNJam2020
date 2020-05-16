@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        house = GameObject.FindGameObjectWithTag("House");
+        house = GameObject.FindGameObjectWithTag("Patio");
         spawner = FindObjectOfType<Spawner>();
         direction = house.transform.position - spawner.transform.position;
         direction.Normalize();

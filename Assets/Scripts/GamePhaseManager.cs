@@ -13,6 +13,7 @@ public class GamePhaseManager : MonoBehaviour
     private int currentWave = 0;
 
     public Player player;
+    private Health patioHealth;
 
     private static GamePhaseManager _instance;
     public static GamePhaseManager Instance
@@ -41,6 +42,7 @@ public class GamePhaseManager : MonoBehaviour
         enemyPhase = GetComponent<EnemyPhase>();
         buildPhase = GetComponent<IntermissionPhase>();
 
+        patioHealth = GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stateMachine.nextPhase = setupPhase; //set the default phase
     }
@@ -48,6 +50,13 @@ public class GamePhaseManager : MonoBehaviour
     void Update()
     {
         stateMachine.UpdateCurrentPhase();
+        CheckPatioHP();
+    }
+
+    void CheckPatioHP()
+    {
+        if (patioHealth.health <= 0)
+            LostLevel();
     }
 
     public void StartEnemyPhase() //can pass in number of waves maybe? as an int
@@ -55,7 +64,7 @@ public class GamePhaseManager : MonoBehaviour
         currentWave++;
         stateMachine.nextPhase = enemyPhase;
         //to finished enemy phase for now, use a timer, but in future it will be based on remaining units alive
-        Invoke("StartBuildPhase", 10);
+        //Invoke("StartBuildPhase", 10);
     }
 
     public void StartBuildPhase()
