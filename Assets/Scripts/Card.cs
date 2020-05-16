@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
@@ -14,52 +15,54 @@ public class Card : MonoBehaviour
     public bool played;
     private bool discarded;
     public string myName;
-    private GameObject theMainCanvas;
-
-    public void Start()
-    {
-        theMainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
-    }
+    bool selected = false;
 
     public Card(string newName)
     {
         myName = newName;
     }
 
-    public void GreyedOut(bool greyed)
-    {
-        GetComponent<Button>().interactable = !greyed;
-    }
-
     public void Play()
     {
         if (!played)
         {
-
-            switch (myName)
+            string scene = SceneManager.GetActiveScene().name;
+            if (scene == "SarahsScene")
             {
-                case "Sprinkler":
-                    if (placedPiece != null)
-                    {
-                        //GameObject wep = FindObjectOfType<WeaponCollection>().gameObject;
-                        GameObject obj = Instantiate(placedPiece);
-                        obj.transform.parent = theMainCanvas.transform;
-                        obj.transform.localScale = new Vector3(1, 1, 1);
+                switch (myName)
+                {
+                    case "PorchFlower":
+                        if (placedPiece != null)
+                        {
+                        }
+                        return;
 
-                    }
-                    //return;
-                    break;
-                case null:
-                    Debug.Log("Invalid card type");
-                    return;
+                    case null:
+                        Debug.Log("Invalid card type");
+                        return;
+                }
+                Debug.Log(myName + " card got played");
+                played = true;
+                gameObject.SetActive(false);
+                //should remove this card from the player hand, now that it has been used?
+            }else if(scene == "CardDeckBuilding")
+            {
+                Select();
             }
-
-            Debug.Log(myName + " card got played");
-            played = true;
-            gameObject.SetActive(false);
-            //should remove this card from the player hand, now that it has been used?
         }
+    }
 
+    public void Select()
+    {
+        selected = !selected;
+        if (selected)
+        {
+            FindObjectOfType<Deck>().selectedCard = this.gameObject;
+        }
+        else
+        {
+            FindObjectOfType<Deck>().selectedCard = null;
+        }
     }
 
 }
