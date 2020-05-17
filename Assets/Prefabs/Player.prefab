@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2699273161112094599
+--- !u!1 &528732101316400960
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2699273161112094597}
-  - component: {fileID: 2699273161112094596}
-  - component: {fileID: 4532906021408584227}
+  - component: {fileID: 528732101316400963}
+  - component: {fileID: 528732101316400962}
+  - component: {fileID: 528732101316400961}
+  - component: {fileID: 528732101316400972}
   m_Layer: 0
-  m_Name: DeckOfCards
-  m_TagString: DeckOfCards
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2699273161112094597
+--- !u!4 &528732101316400963
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699273161112094599}
+  m_GameObject: {fileID: 528732101316400960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,44 +33,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2699273161112094596
+--- !u!114 &528732101316400962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699273161112094599}
+  m_GameObject: {fileID: 528732101316400960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330e3e97cb3e4ed4bb55f588b5894aa6, type: 3}
+  m_Script: {fileID: 11500000, guid: e6a2bdbf8fe36934a85a0731fbcba62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfCardPrefabs:
-  - {fileID: 1255702740130832597, guid: 53428c0b40b57704da178b557a85b96a, type: 3}
-  - {fileID: 219034640751140147, guid: a0b2c683586415d43acc113128b77d92, type: 3}
-  - {fileID: 4943297266053977197, guid: a393b7f53e8224c4e82965ab829bb0cc, type: 3}
-  - {fileID: 3647397650716868575, guid: c3104ebbc95e26e4d9eb7737f6a076f4, type: 3}
-  - {fileID: 1255702740130832597, guid: c768178acfc88d942af1dae5d97979d0, type: 3}
-  - {fileID: 2094194173518041105, guid: 938752fa6312b1749bbef85df20638f4, type: 3}
-  - {fileID: 1255702740130832597, guid: 798ad733e171fb247947b302067bdf32, type: 3}
-  - {fileID: 1255702740130832597, guid: aeb6cd99f6474d84592c261bd78bc1a3, type: 3}
-  - {fileID: 4363693971985882551, guid: b6918b4a6e68df741b664d94a8327c3d, type: 3}
-  numberOfEach: 040000000400000003000000030000000200000002000000020000000200000001000000
-  levelNumber: 1
-  selectedCard: {fileID: 0}
---- !u!82 &4532906021408584227
+--- !u!114 &528732101316400961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528732101316400960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9183198b9204a4f858f7b1723b6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handPanel: {fileID: 0}
+  cardPrefab: {fileID: 0}
+--- !u!82 &528732101316400972
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699273161112094599}
+  m_GameObject: {fileID: 528732101316400960}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e7549f859d24154bb6aac7e464bcba1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 741597153250e3243b071549a3683986, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.656
+  m_Volume: 0.737
   m_Pitch: 1
   Loop: 0
   Mute: 0

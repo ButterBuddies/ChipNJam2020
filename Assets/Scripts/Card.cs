@@ -17,10 +17,12 @@ public class Card : MonoBehaviour
     public string myName;
     bool selected = false;
     private GameObject theMainCanvas;
+    Deck deck;
 
     public void Start()
     {
         theMainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        deck = FindObjectOfType<Deck>();
     }
 
     public Card(string newName)
@@ -122,6 +124,7 @@ public class Card : MonoBehaviour
                 }
                 Debug.Log(myName + " card got played");
                 played = true;
+                deck.PlayNoise();
                 gameObject.SetActive(false);
                 //should remove this card from the player hand, now that it has been used?
             }else if(scene == "CardDeckBuilding")

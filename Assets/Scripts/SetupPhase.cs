@@ -7,6 +7,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
     private int numCardsToDraw = 7;
     public GameObject finishPhaseBtn;
     public GameObject deckPanel;
+    public AudioClip music;
 
     public void Enter()
     {
@@ -22,6 +23,8 @@ public class SetupPhase : MonoBehaviour, IGamePhase
             GamePhaseManager.Instance.player.DrawCard();
         }
         GamePhaseManager.Instance.player.ShowHand("Build");
+        GamePhaseManager.Instance.musicPlayer.clip = music;
+        GamePhaseManager.Instance.musicPlayer.Play();
     }
 
     public void Execute()

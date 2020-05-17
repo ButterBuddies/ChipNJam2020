@@ -10,7 +10,7 @@ public class Deck : MonoBehaviour
     public List<GameObject> listOfCardPrefabs = new List<GameObject>();
     public List<int> numberOfEach = new List<int>();
     public int levelNumber = 1;
-
+    AudioSource audio;
 
     public GameObject selectedCard;
 
@@ -27,17 +27,18 @@ public class Deck : MonoBehaviour
 
     private void Start()
     { //just adding a bunch of cards for now, will setup a initialize deck later
-        //cards.Add(new Card("a"));
-        //cards.Add(new Card("b"));
-        //cards.Add(new Card("c"));
-        //cards.Add(new Card("d"));
-        //cards.Add(new Card("e"));
-        //cards.Add(new Card("f"));
-        //cards.Add(new Card("g"));
-        //cards.Add(new Card("h"));
-        //cards.Add(new Card("i"));
-        //cards.Add(new Card("j"));
-       // MakeRandomDeck();
+      //cards.Add(new Card("a"));
+      //cards.Add(new Card("b"));
+      //cards.Add(new Card("c"));
+      //cards.Add(new Card("d"));
+      //cards.Add(new Card("e"));
+      //cards.Add(new Card("f"));
+      //cards.Add(new Card("g"));
+      //cards.Add(new Card("h"));
+      //cards.Add(new Card("i"));
+      //cards.Add(new Card("j"));
+      // MakeRandomDeck();
+        audio = GetComponent<AudioSource>();
     }
 
     public void MakeRandomDeck(Transform transform)
@@ -167,6 +168,11 @@ public class Deck : MonoBehaviour
         cardsInDeck.Remove(nextCard);
         
         return nextCard;
+    }
+
+    public void PlayNoise()
+    {
+        audio.PlayOneShot(audio.clip);
     }
     
 }
