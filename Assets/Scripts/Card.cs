@@ -94,7 +94,22 @@ public class Card : MonoBehaviour
                             flower.gameObject.transform.localScale = new Vector3(2, 2, 2);
                         }
                         break;
-
+                    case "GMO":
+                        //find all flowers, get HP based on number of flowers and clear them out
+                        Flower[] flowers2 = GameObject.FindObjectsOfType<Flower>();
+                        int count = flowers2.Length;
+                        foreach (Flower flower in flowers2)
+                        {
+                            Destroy(flower.gameObject);
+                        }
+                        if (placedPiece != null && count > 0)
+                        {
+                            GameObject obj = Instantiate(placedPiece);
+                            obj.transform.parent = theMainCanvas.transform;
+                            obj.transform.localScale = new Vector3(count, count, count);
+                            obj.GetComponent<Flower>().damageAmount = 15;
+                        }
+                        break;
                     case "2x4":
                         GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
                         break;
