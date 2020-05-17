@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public float minSpawnDelay = 1f;
     public float maxSpawnDelay = 2f;
 
+    public int totalEnemies = 10;
     public int numTermites = 0;
     public int numBeetles = 0;
     public int numBeavers = 0;
@@ -20,6 +21,7 @@ public class Spawner : MonoBehaviour
 
     public Stack<EnemyMovement> attackerSpawnList;
     GameObject house;
+    Deck deck;
 
     public void Awake()
     {
@@ -27,6 +29,10 @@ public class Spawner : MonoBehaviour
         attackerSpawnList = new Stack<EnemyMovement>();
         house = GameObject.FindGameObjectWithTag("Patio");
         //GenerateSpawnList();
+    }
+    private void Start()
+    {
+        deck = FindObjectOfType<Deck>();
     }
 
     //IEnumerator Start()
@@ -48,10 +54,32 @@ public class Spawner : MonoBehaviour
     public void Reset()
     {
         doneSpawning = false;
-        numTermites = 10;
-        numBeetles = 3;
-        numBeavers = 0;
-        numBears = 0;
+        if (deck.levelNumber == 1)
+        {
+            numTermites = 10;
+            numBeetles = 3;
+            numBeavers = 0;
+            numBears = 0;
+        }else if(deck.levelNumber >1 && deck.levelNumber < 4)
+        {
+            numTermites = 15;
+            numBeetles = 3;
+            numBeavers = 2;
+            numBears = 0;
+        }else if(deck.levelNumber >3 && deck.levelNumber < 5)
+        {
+            numTermites = 20;
+            numBeetles = 5;
+            numBeavers = 2;
+            numBears = Random.Range(0,1);
+        }
+        else
+        {
+            numTermites = 25;
+            numBeetles = 5;
+            numBeavers = 2;
+            numBears = 1;
+        }
         GenerateSpawnList();
     }
 
