@@ -121,13 +121,6 @@ public class Card : MonoBehaviour
                     case "2x4":
                         GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
                         break;
-                    case "Buffout":
-                        Health[] lives = FindObjectsOfType<Health>();
-                        foreach (Health h in lives)
-                        {
-                            h.health += 10;
-                        }
-                        break;
 
                     case null:
                         Debug.Log("Invalid card type");
