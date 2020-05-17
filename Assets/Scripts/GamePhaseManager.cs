@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePhaseManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GamePhaseManager : MonoBehaviour
     private Health patioHealth;
 
     private static GamePhaseManager _instance;
+    public GameObject winScreen;
+
     public static GamePhaseManager Instance
     {
         get
@@ -88,12 +91,18 @@ public class GamePhaseManager : MonoBehaviour
         //we won the game! Got through all the waves alive
         //load the win sequnce or scene or whatever
         Debug.Log("Won the game! Survived all " + currentWave + " waves!");
+        winScreen.SetActive(true);
     }
 
     public void LostLevel()
     {
         //should be based on deck HP == 0?
         Debug.Log("lost the game! Survived up to wave " + currentWave);
+    }
+
+    public void NextPhase()
+    {
+        SceneManager.LoadScene("CardDeckBuilding");
     }
 }
 

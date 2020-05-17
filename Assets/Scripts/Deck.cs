@@ -9,6 +9,7 @@ public class Deck : MonoBehaviour
     private int maxNumOfCards = 30;
     public List<GameObject> listOfCardPrefabs = new List<GameObject>();
     public List<int> numberOfEach = new List<int>();
+    public int levelNumber = 1;
 
 
     public GameObject selectedCard;

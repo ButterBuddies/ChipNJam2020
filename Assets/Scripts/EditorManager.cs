@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class EditorManager : MonoBehaviour
 {
@@ -17,5 +19,16 @@ public class EditorManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ButtonCall(bool add)
+    {
+        deck.EditDeck(add);
+    }
+
+    public void NextLevel()
+    {
+        deck.levelNumber++;
+        SceneManager.LoadScene(deck.levelNumber);
     }
 }
