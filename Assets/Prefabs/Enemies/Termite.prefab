@@ -140,7 +140,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 74147935967876584}
-          m_MethodName: Squished
+          m_MethodName: SquishDamage
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
