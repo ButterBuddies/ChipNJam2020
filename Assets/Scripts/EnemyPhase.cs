@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPhase : MonoBehaviour, IGamePhase
 {
     private Spawner spawner;
+    public AudioClip music;
 
     public void Start()
     {
@@ -17,6 +18,8 @@ public class EnemyPhase : MonoBehaviour, IGamePhase
         GamePhaseManager.Instance.player.ShowHand("Action");
         spawner.Reset();
         InvokeRepeating("SpawnRequest", 1, .1f);
+        GamePhaseManager.Instance.musicPlayer.clip = music;
+        GamePhaseManager.Instance.musicPlayer.Play();
     }
 
     private void SpawnRequest()

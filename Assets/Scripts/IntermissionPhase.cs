@@ -7,6 +7,7 @@ public class IntermissionPhase : MonoBehaviour, IGamePhase
 {
     private int numCardsToDraw = 1;
     public GameObject finishPhaseBtn;
+    public AudioClip music;
 
     public void Enter()
     {
@@ -17,6 +18,8 @@ public class IntermissionPhase : MonoBehaviour, IGamePhase
             GamePhaseManager.Instance.player.DrawCard();
         }
         GamePhaseManager.Instance.player.ShowHand("Build");
+        GamePhaseManager.Instance.musicPlayer.clip = music;
+        GamePhaseManager.Instance.musicPlayer.Play();
     }
 
     public void Execute()

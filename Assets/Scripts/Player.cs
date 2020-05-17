@@ -6,12 +6,13 @@ public class Player : MonoBehaviour
 {
     private Hand hand;
     private Deck deck;
+    private AudioSource audio;
 
     private void Start()
     {
         hand = GetComponent<Hand>();
         deck = GameObject.FindGameObjectWithTag("DeckOfCards").GetComponent<Deck>();
-
+        audio = GetComponent<AudioSource>();
     }
 
     public void DrawCard()
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         if (nextcard != null)
         {
             hand.Add(nextcard);
+            audio.PlayOneShot(audio.clip);
         }
         else
         {

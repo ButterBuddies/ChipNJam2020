@@ -10,6 +10,8 @@ public class GamePhaseManager : MonoBehaviour
     private EnemyPhase enemyPhase;
     private IntermissionPhase buildPhase;
 
+    bool end = false;
+
     public int waveCount = 2;
     private int currentWave = 0;
 
@@ -20,6 +22,9 @@ public class GamePhaseManager : MonoBehaviour
 
     private static GamePhaseManager _instance;
     public GameObject winScreen;
+    public AudioSource musicPlayer;
+    public AudioClip winMusic;
+    public AudioClip loseMusic;
 
     public static GamePhaseManager Instance
     {
@@ -50,6 +55,7 @@ public class GamePhaseManager : MonoBehaviour
         patioHealth = GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         stateMachine.nextPhase = setupPhase; //set the default phase
+        musicPlayer = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -60,8 +66,14 @@ public class GamePhaseManager : MonoBehaviour
 
     void CheckPatioHP()
     {
-        if (patioHealth.health <= 0)
-            LostLevel();
+        if (!end)
+        {
+            if (patioHealth.health <= 0)
+            {
+                LostLevel();
+                end = true;
+            }
+        }
     }
 
     public void StartEnemyPhase() //can pass in number of waves maybe? as an int
@@ -92,12 +104,14 @@ public class GamePhaseManager : MonoBehaviour
         //load the win sequnce or scene or whatever
         Debug.Log("Won the game! Survived all " + currentWave + " waves!");
         winScreen.SetActive(true);
+        musicPlayer.PlayOneShot(winMusic);
     }
 
     public void LostLevel()
     {
         //should be based on deck HP == 0?
         Debug.Log("lost the game! Survived up to wave " + currentWave);
+        musicPlayer.PlayOneShot(loseMusic);
     }
 
     public void NextPhase()
