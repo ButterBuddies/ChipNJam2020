@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd794b979edc914cadfb4cf327883c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 1
+  myType: 0
+  placedPiece: {fileID: 0}
   played: 0
   myName: 2x4
