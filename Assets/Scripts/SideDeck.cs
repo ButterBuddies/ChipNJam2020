@@ -25,13 +25,27 @@ public class SideDeck : MonoBehaviour
 
     void Update()
     {
-        if (cardsCountText != null)
+        if (cardsCountText != null )
+        {
             cardsCountText.text = "Build your deck! \t Cards " + countCards + "/" + maxDeckSize;
+        }
     }
 
     private void Start()
     {
         Debug.Log("in start of side deck");
+    }
+
+    public void OnLevelWasLoaded(int level)
+    {
+        Debug.Log("level was loaded");
+        string scene = SceneManager.GetActiveScene().name;
+        if (scene.Contains("CardDeckBuilding"))
+        {
+            cardsCountText = GameObject.FindGameObjectWithTag("CountText").GetComponent<Text>();
+            Invoke("ClearCardCounts", 1f);
+            countCards = 0;
+        }
     }
 
     private void Awake()
@@ -46,7 +60,7 @@ public class SideDeck : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Debug.Log("in Awake of side deck");
+        //Debug.Log("in Awake of side deck");
         //ClearCardCounts();
         string scene = SceneManager.GetActiveScene().name;
         if (scene.Contains("CardDeckBuilding"))
