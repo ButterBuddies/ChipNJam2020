@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: faa991e49f1dd74479155a33b4a01b8b
+  - enabled: 1
+    path: Assets/Scenes/SarahsScene.unity
+    guid: 11f9e5bc258c63d429527eb45a91d767
   m_configObjects: {}

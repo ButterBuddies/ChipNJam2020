@@ -52,11 +52,11 @@ public class Card : MonoBehaviour
                             em.moveSpeedMultiplier = 0.8f;
                         }
                         FindObjectOfType<Spawner>().globalMoveSpeedMultiplier = 0.8f;
-                        return;
+                        break;
 
                     case "LiquidNitrogen":
                         StartCoroutine("Freeze");
-                        return;
+                        break;
 
                     case "Incecticide":
                         Sprinkler[] sprinklers = FindObjectsOfType<Sprinkler>();
@@ -68,11 +68,20 @@ public class Card : MonoBehaviour
                             }
                         }
                         FindObjectOfType<GamePhaseManager>().damageMultiplier = 2;
-                        return;
+                        break;
+
+                    case "PorchFlower":
+                        if (placedPiece != null)
+                        {
+                            GameObject obj = Instantiate(placedPiece);
+                            obj.transform.parent = theMainCanvas.transform;
+                            obj.transform.localScale = new Vector3(1, 1, 1);
+                        }
+                        break;
 
                     case null:
                         Debug.Log("Invalid card type");
-                        return;
+                        break;
                 }
                 Debug.Log(myName + " card got played");
                 played = true;
