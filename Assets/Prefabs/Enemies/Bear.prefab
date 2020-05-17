@@ -89,9 +89,9 @@ MonoBehaviour:
   tempMoveSpeed: 0
   maxMoveSpeed: 1.7
   moveSpeedMultiplier: 1
-  attackDamage: 25
+  attackDamage: 14
   attackSpeed: 4
-  health: 40
+  health: 15
   scorePoints: 40
 --- !u!61 &-5065491185902629913
 BoxCollider2D:
