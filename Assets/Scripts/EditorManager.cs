@@ -12,6 +12,15 @@ public class EditorManager : MonoBehaviour
     void Start()
     {
         deck = FindObjectOfType<Deck>();
+        deck.CleanUp();
+        if (deck.addedCards.Count > 0)
+        {
+            foreach (GameObject obj in deck.addedCards)
+            {
+                deck.cardsInDeck.Add(obj);
+            }
+        }
+        OpenPack();
         deck.MakeDeck(deckPanel.transform);
     }
 
@@ -30,5 +39,13 @@ public class EditorManager : MonoBehaviour
     {
         deck.levelNumber++;
         SceneManager.LoadScene(deck.levelNumber);
+    }
+
+    public void OpenPack()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            deck.EditDeck(deck.listOfCardPrefabs[Random.Range(4, 8)], true);
+        }
     }
 }
