@@ -107,6 +107,7 @@ public class GamePhaseManager : MonoBehaviour
         Debug.Log("Won the game! Survived all " + currentWave + " waves!");
         winScreen.transform.SetSiblingIndex(9999);
         winScreen.SetActive(true);
+        FindObjectOfType<Deck>().levelNumber++;
         musicPlayer.Stop();
         musicPlayer.PlayOneShot(winMusic);
     }
