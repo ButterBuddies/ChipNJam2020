@@ -56,7 +56,9 @@ public class Card : MonoBehaviour
                         break;
 
                     case "LiquidNitrogen":
-                        StartCoroutine("Freeze");
+                        //StartCoroutine("Freeze");
+                        Freeze();
+                        Invoke("Unfreeze", 5);
                         break;
 
                     case "Incecticide":
@@ -147,14 +149,34 @@ public class Card : MonoBehaviour
         GetComponent<Button>().interactable = !greyed;
     }
 
-    IEnumerator Freeze()
+    //IEnumerator Freeze()
+    //{
+    //    EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
+    //    foreach (EnemyMovement em in enemyMoves)
+    //    {
+    //        em.moveSpeedMultiplier = 0f;
+    //    }
+    //    yield return new WaitForSeconds(5f);
+    //    foreach (EnemyMovement em in enemyMoves)
+    //    {
+    //        em.moveSpeedMultiplier = 0.8f;
+    //    }
+    //}
+
+    public void Freeze()
     {
+        GameObject.FindGameObjectWithTag("LiquidNitro").gameObject.transform.GetChild(0).gameObject.SetActive(true);
         EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
         foreach (EnemyMovement em in enemyMoves)
         {
             em.moveSpeedMultiplier = 0f;
         }
-        yield return new WaitForSeconds(5f);
+    }
+
+    public void Unfreeze()
+    {
+        GameObject.FindGameObjectWithTag("LiquidNitro").gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
         foreach (EnemyMovement em in enemyMoves)
         {
             em.moveSpeedMultiplier = 0.8f;
