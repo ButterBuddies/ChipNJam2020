@@ -105,6 +105,7 @@ public class GamePhaseManager : MonoBehaviour
         //we won the game! Got through all the waves alive
         //load the win sequnce or scene or whatever
         Debug.Log("Won the game! Survived all " + currentWave + " waves!");
+        winScreen.transform.SetSiblingIndex(9999);
         winScreen.SetActive(true);
         musicPlayer.Stop();
         musicPlayer.PlayOneShot(winMusic);
@@ -114,6 +115,7 @@ public class GamePhaseManager : MonoBehaviour
     {
         //should be based on deck HP == 0?
         Debug.Log("lost the game! Survived up to wave " + currentWave);
+        loseScreen.transform.SetSiblingIndex(9999);
         loseScreen.SetActive(true);
         musicPlayer.Stop();
         musicPlayer.PlayOneShot(loseMusic);
