@@ -1136,11 +1136,11 @@ GameObject:
   m_Component:
   - component: {fileID: 945383416045672470}
   - component: {fileID: 6128430006372654191}
-  - component: {fileID: 45230929090165600}
   - component: {fileID: 3175291368834964986}
   - component: {fileID: 3173771764996104124}
   - component: {fileID: 3853518990160087265}
   - component: {fileID: -8287221462206183082}
+  - component: {fileID: 750152894320720333}
   m_Layer: 5
   m_Name: GMOFlower
   m_TagString: Untagged
@@ -1190,32 +1190,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &45230929090165600
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6037326274190272006}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -33.069305, y: -12.025192}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 92.651276, y: 77.285736}
-  m_EdgeRadius: 0
 --- !u!114 &3175291368834964986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1256,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!58 &750152894320720333
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037326274190272006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -97.7, y: 0}
+  serializedVersion: 2
+  m_Radius: 200
 --- !u!1 &6222854413174592910
 GameObject:
   m_ObjectHideFlags: 0
