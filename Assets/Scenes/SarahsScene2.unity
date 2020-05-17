@@ -1414,6 +1414,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GMOFlower
       objectReference: {fileID: 0}
+    - target: {fileID: 6877421087021858554, guid: b95f9c86219dff14c89f91618cdbd6f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95f9c86219dff14c89f91618cdbd6f9, type: 3}
 --- !u!224 &5976999183387651254 stripped
