@@ -146,6 +146,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2699273161112094596, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: listOfCardPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094596, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: numberOfEach.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
         type: 3}
       propertyPath: m_LocalPosition.x
