@@ -22,6 +22,7 @@ public class GamePhaseManager : MonoBehaviour
 
     private static GamePhaseManager _instance;
     public GameObject winScreen;
+    public GameObject loseScreen;
     public AudioSource musicPlayer;
     public AudioClip winMusic;
     public AudioClip loseMusic;
@@ -86,9 +87,10 @@ public class GamePhaseManager : MonoBehaviour
 
     public void StartBuildPhase()
     {
-        if (currentWave >= waveCount)
+        if (currentWave >= waveCount&& !end)
         {
             WonLevel();
+            end = true;
         }
         else
         {
@@ -104,6 +106,7 @@ public class GamePhaseManager : MonoBehaviour
         //load the win sequnce or scene or whatever
         Debug.Log("Won the game! Survived all " + currentWave + " waves!");
         winScreen.SetActive(true);
+        musicPlayer.Stop();
         musicPlayer.PlayOneShot(winMusic);
     }
 
@@ -111,12 +114,23 @@ public class GamePhaseManager : MonoBehaviour
     {
         //should be based on deck HP == 0?
         Debug.Log("lost the game! Survived up to wave " + currentWave);
+        loseScreen.SetActive(true);
+        musicPlayer.Stop();
         musicPlayer.PlayOneShot(loseMusic);
     }
 
     public void NextPhase()
     {
         SceneManager.LoadScene("CardDeckBuilding");
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

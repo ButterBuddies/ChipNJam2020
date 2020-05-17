@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SarahsScene.unity
     guid: 11f9e5bc258c63d429527eb45a91d767
   - enabled: 1
-    path: Assets/Scenes/TestScene1.unity
-    guid: 038268df652d82a4c91ac6b49468235b
+    path: Assets/Scenes/TestScene.unity
+    guid: 248bea2aa84096648be832cfd616822e
   - enabled: 1
     path: Assets/Scenes/CardDeckBuilding.unity
     guid: 60f06d9b43033084787588935c64c7cc
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 161489ae12abc7c44a47402212a8c229
   m_configObjects: {}
