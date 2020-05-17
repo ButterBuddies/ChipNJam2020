@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class SliderHealth : MonoBehaviour
 {
-    Health patioHealth;
+    Health health;
     Slider slider;
 
     private void Awake()
     {
-        patioHealth = gameObject.GetComponentInParent<Health>();
+        health = gameObject.GetComponentInParent<Health>();
         slider = GetComponent<Slider>();
-        slider.value = 100;
+        slider.maxValue = health.health;
+        slider.value = health.health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = patioHealth.health;
+        slider.value = health.health;
     }
 }
