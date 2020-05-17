@@ -165,6 +165,7 @@ public class Deck : MonoBehaviour
         GameObject nextCard = cardsInDeck[0];
         discardDeck.Add(cardsInDeck[0]);
         cardsInDeck.Remove(nextCard);
+        
         return nextCard;
     }
     

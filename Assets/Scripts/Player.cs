@@ -16,7 +16,15 @@ public class Player : MonoBehaviour
 
     public void DrawCard()
     {
-        hand.Add(deck.GetNextCard());
+        GameObject nextcard = deck.GetNextCard();
+        if (nextcard != null)
+        {
+            hand.Add(nextcard);
+        }
+        else
+        {
+            Debug.Log("there's no card");
+        }
     }
 
     public void ShowHand(string phaseType)
