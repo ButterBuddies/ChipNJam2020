@@ -16,7 +16,7 @@ public class EditorManager : MonoBehaviour
         {
             foreach (GameObject obj in deck.addedCards)
             {
-                deck.cardsInDeck.Add(obj);
+                deck.EditDeck(obj,true);
             }
         }
         OpenPack();
