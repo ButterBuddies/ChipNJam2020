@@ -24,12 +24,12 @@ public class LevelLoader : MonoBehaviour
 
     public void TitleScreen()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void LoadCredits()
     {
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()
