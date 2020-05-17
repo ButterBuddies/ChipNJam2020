@@ -121,7 +121,7 @@ public class GamePhaseManager : MonoBehaviour
 
     public void NextPhase()
     {
-        SceneManager.LoadScene("CardDeckBuilding");
+        SceneManager.LoadScene("CardDeckBuilding2");
     }
 
     public void Credits()

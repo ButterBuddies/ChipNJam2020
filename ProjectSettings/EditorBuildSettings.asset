@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 161489ae12abc7c44a47402212a8c229
+  - enabled: 1
+    path: Assets/Scenes/CardDeckBuilding2.unity
+    guid: fe1333e8bccbc8843a6c519093bbe7ff
   m_configObjects: {}

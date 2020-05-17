@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
         type: 3}
@@ -215,6 +215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeckOfCards (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094599, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4532906021408584227, guid: e3076093cae4c6443b63851b16340ce9,
         type: 3}
@@ -386,7 +391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525401339
 GameObject:
@@ -1417,6 +1422,75 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1182452571}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1718113663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094599, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_Name
+      value: DeckOfCards
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3076093cae4c6443b63851b16340ce9, type: 3}
 --- !u!1001 &1833829404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,6 +1693,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958195414}
   m_CullTransparentMesh: 0
+--- !u!1 &2032964803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6904029236210318547, guid: e20c7ed272752e04fb4a86cbdd572f61,
+    type: 3}
+  m_PrefabInstance: {fileID: 938015824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &528732099877050916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,7 +1759,7 @@ PrefabInstance:
     - target: {fileID: 528732101316400963, guid: 2a31b5b4e51a0664c9aa85b069245ad9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 528732101316400963, guid: 2a31b5b4e51a0664c9aa85b069245ad9,
         type: 3}
@@ -1860,7 +1940,7 @@ RectTransform:
   - {fileID: 1141268455}
   - {fileID: 938015825}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2133,5 +2213,10 @@ PrefabInstance:
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 1141268454}
+    - target: {fileID: 8650848799840627063, guid: a4953d49dbed3af4d8179bb69fde7cd4,
+        type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 2032964803}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4953d49dbed3af4d8179bb69fde7cd4, type: 3}
