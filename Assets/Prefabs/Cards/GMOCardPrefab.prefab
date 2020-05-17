@@ -142,6 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd794b979edc914cadfb4cf327883c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: 0
+  placedPiece: {fileID: 6037326274190272006, guid: b95f9c86219dff14c89f91618cdbd6f9,
+    type: 3}
+  played: 0
   myName: GMO
 --- !u!1 &7618949340167135925
 GameObject:

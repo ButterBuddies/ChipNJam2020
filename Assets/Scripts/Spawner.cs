@@ -57,7 +57,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnAttacker()
     {
-        Debug.Log("got in spawn atcker");
+        //Debug.Log("got in spawn atcker");
         if (attackerSpawnList.Count == 0)
         {
             doneSpawning = true;

@@ -42,9 +42,11 @@ public class Card : MonoBehaviour
                             GameObject obj = Instantiate(placedPiece);
                             obj.transform.parent = theMainCanvas.transform;
                             obj.transform.localScale = new Vector3(1, 1, 1);
+
                         }
                         break;
-                    case "Lawn Fertilizer":
+                    case "LawnFertilizer":
+                        GameObject.FindGameObjectWithTag("FullGrass").GetComponent<SpriteRenderer>().enabled = true;
                         EnemyMovement[] enemyMoves = FindObjectsOfType<EnemyMovement>();
                         foreach (EnemyMovement em in enemyMoves)
                         {
@@ -59,11 +61,16 @@ public class Card : MonoBehaviour
 
                     case "Incecticide":
                         Sprinkler[] sprinklers = FindObjectsOfType<Sprinkler>();
+
                         if (sprinklers.Length > 0)
                         {
                             foreach (Sprinkler s in sprinklers)
                             {
                                 s.damageMultiplier = 2;
+                                ParticleSystem ps = s.GetComponent<ParticleSystem>();
+                                var main = ps.main;
+                                main.startColor = new Color(255, 255, 255, 255);
+
                             }
                         }
                         FindObjectOfType<GamePhaseManager>().damageMultiplier = 2;
@@ -78,6 +85,31 @@ public class Card : MonoBehaviour
                         }
                         break;
 
+                    case "PlantFood":
+                        //find all flowers, increase there attack power and scale
+                        Flower[] flowers = GameObject.FindObjectsOfType<Flower>();
+                        foreach (Flower flower in flowers)
+                        {
+                            flower.damageAmount = 10;
+                            flower.gameObject.transform.localScale = new Vector3(2, 2, 2);
+                        }
+                        break;
+                    case "GMO":
+                        //find all flowers, get HP based on number of flowers and clear them out
+                        Flower[] flowers2 = GameObject.FindObjectsOfType<Flower>();
+                        int count = flowers2.Length;
+                        foreach (Flower flower in flowers2)
+                        {
+                            Destroy(flower.gameObject);
+                        }
+                        if (placedPiece != null && count > 0)
+                        {
+                            GameObject obj = Instantiate(placedPiece);
+                            obj.transform.parent = theMainCanvas.transform;
+                            obj.transform.localScale = new Vector3(count, count, count);
+                            obj.GetComponent<Flower>().damageAmount = 15;
+                        }
+                        break;
                     case "2x4":
                         GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
                         break;

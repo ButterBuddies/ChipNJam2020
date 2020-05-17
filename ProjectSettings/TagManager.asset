@@ -10,6 +10,7 @@ TagManager:
   - Spawner
   - Patio
   - MainCanvas
+  - FullGrass
   layers:
   - Default
   - TransparentFX

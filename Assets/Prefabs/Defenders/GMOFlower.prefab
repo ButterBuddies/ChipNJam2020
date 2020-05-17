@@ -856,6 +856,8 @@ GameObject:
   - component: {fileID: 45230929090165600}
   - component: {fileID: 3175291368834964986}
   - component: {fileID: 3173771764996104124}
+  - component: {fileID: 3853518990160087265}
+  - component: {fileID: -8287221462206183082}
   m_Layer: 5
   m_Name: GMOFlower
   m_TagString: Untagged
@@ -942,6 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7775cb595ff67b944a5f446aa00a3d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 10
 --- !u!114 &3173771764996104124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +958,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+--- !u!114 &3853518990160087265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037326274190272006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a2603e3e7d07946913fad4d724d76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8287221462206183082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037326274190272006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3853518990160087265}
+          m_MethodName: Placed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6222854413174592910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1169,7 @@ RectTransform:
   m_GameObject: {fileID: 7209901439697834850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 7337112715422515374}
   - {fileID: 8937711863216899865}

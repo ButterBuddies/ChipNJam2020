@@ -55,7 +55,7 @@ public class EnemyMovement : MonoBehaviour
         {
             objectToAttack.DecrementHealth(attackDamage);
             if (objectToAttack.GetComponent<Flower>())
-                DecrementHealth(5);
+                DecrementHealth(objectToAttack.GetComponent<Flower>().damageAmount);
             yield return new WaitForSeconds(attackSpeed);
         }
         tempMoveSpeed = maxMoveSpeed;
