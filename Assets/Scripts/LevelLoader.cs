@@ -14,6 +14,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextScene()
     {
+        Debug.Log("level loader did a bad thing");
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 

@@ -15,20 +15,10 @@ public class EditorManager : MonoBehaviour
         deck.MakeDeck(deckPanel.transform);
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
-    //public void ButtonCall(bool add)
-    //{
-    //    deck.EditDeck(add);
-    //}
-
     public void NextLevel()
     {
+        Debug.Log("editor manager tryed to load Level" + deck.levelNumber);
         deck.levelNumber++;
-        SceneManager.LoadScene(deck.levelNumber);
+        SceneManager.LoadScene("Level" + deck.levelNumber);
     }
 }
