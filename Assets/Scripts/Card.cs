@@ -114,19 +114,12 @@ public class Card : MonoBehaviour
                         {
                             GameObject obj = Instantiate(placedPiece);
                             obj.transform.parent = theMainCanvas.transform;
-                            obj.transform.localScale = new Vector3(count, count, count);
+                            obj.transform.localScale = new Vector3(count*.3f, count * .3f, count * .3f);
                             obj.GetComponent<Flower>().damageAmount = 15;
                         }
                         break;
                     case "2x4":
                         GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
-                        break;
-                    case "Buffout":
-                        Health[] lives = FindObjectsOfType<Health>();
-                        foreach (Health h in lives)
-                        {
-                            h.health += 10;
-                        }
                         break;
 
                     case null:

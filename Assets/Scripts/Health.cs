@@ -19,20 +19,24 @@ public class Health : MonoBehaviour
     public void DecrementHealth(int damage)
     {
         health -= damage;
-        StartCoroutine("FlashHurt");
+        Invoke("FlashHurtOn", 0.1f);
         if (health <= 0)
         {
             gameObject.SetActive(false);
         }
     }
 
-    IEnumerator FlashHurt()
+    public void FlashHurtOn()
     {
-        foreach(Image i in images)
+        foreach (Image i in images)
             i.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        Invoke("FlashHurtOff", 0.1f);
+
+    }
+
+    public void FlashHurtOff()
+    {
         foreach (Image i in images)
             i.color = defaultColor;
-        yield break;
     }
 }

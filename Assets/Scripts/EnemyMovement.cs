@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private Health objectToAttack;
     RawImage enemyImage;
     Color defaultColor;
+    private bool toggle;
 
     private void Awake()
     {
@@ -64,7 +65,8 @@ public class EnemyMovement : MonoBehaviour
     public void DecrementHealth(int amount)
     {
         health -= amount;
-        StartCoroutine("FlashHurt");
+        //StartCoroutine("FlashHurt");
+        Invoke("FlashHurtOn", 0.1f);
         if (health <= 0)
         {
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
@@ -73,11 +75,23 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    IEnumerator FlashHurt()
+    public void FlashHurtOn()
     {
         enemyImage.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        enemyImage.color = defaultColor;
-        yield break;
+        Invoke("FlashHurtOff", 0.1f);
+
     }
+
+    public void FlashHurtOff()
+    {
+        enemyImage.color = defaultColor;
+    }
+
+    //IEnumerator FlashHurt()
+    //{
+    //    enemyImage.color = Color.red;
+    //    yield return new WaitForSeconds(0.1f);
+    //    enemyImage.color = defaultColor;
+    //    yield break;
+    //}
 }

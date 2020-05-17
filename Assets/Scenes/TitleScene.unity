@@ -1530,47 +1530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numSprinklers
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numLawnF
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numLiqNitro
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numInce
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numPorchFlower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numPlantFood
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numGMO
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: num2x4
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
-      propertyPath: numBuffout
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6192279925486560360, guid: 34f7a3f7703afb34188318f211595cf1,
-        type: 3}
-      propertyPath: numberOfEach.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6192279925486560361, guid: 34f7a3f7703afb34188318f211595cf1,
         type: 3}
       propertyPath: m_LocalPosition.x

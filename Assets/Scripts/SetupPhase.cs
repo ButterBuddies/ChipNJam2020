@@ -12,6 +12,7 @@ public class SetupPhase : MonoBehaviour, IGamePhase
     public void Enter()
     {
         Deck deck = FindObjectOfType<Deck>();
+        deck.CleanUp();
         deck.MakeDeck(deckPanel.transform);
         deck.Shuffle();
 

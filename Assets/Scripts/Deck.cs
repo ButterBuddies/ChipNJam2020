@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    private List<GameObject> cardsInDeck = new List<GameObject>();
+    public List<GameObject> cardsInDeck = new List<GameObject>();
     private List<GameObject> discardDeck = new List<GameObject>();
     private int maxNumOfCards = 30;
     public List<GameObject> listOfCardPrefabs = new List<GameObject>();
     public List<int> numberOfEach = new List<int>();
+    public List<GameObject> addedCards = new List<GameObject>();
     public int levelNumber = 1;
     AudioSource audio;
     private SideDeck sideDeck;
@@ -100,21 +101,20 @@ public class Deck : MonoBehaviour
     
     public void CleanUp()
     {
-        /*
+        
         cardsInDeck = new List<GameObject>();
         discardDeck = new List<GameObject>(); 
-        */
+        
     }
 
-    public void EditDeck(bool add)
+    public void EditDeck(GameObject card, bool add)
     {
-        if (selectedCard != null)
-        {
+
             //int index = listOfCardPrefabs.IndexOf(selectedCard);
             int index=0;
             bool searching = true;
             int i = 0;
-            string cardName = selectedCard.GetComponent<Card>().myName;
+            string cardName = card.GetComponent<Card>().myName;
             while (searching)
             {
                 if (i < listOfCardPrefabs.Count)
@@ -137,36 +137,32 @@ public class Deck : MonoBehaviour
                 }
             }
             int number = 0;
+        
             if (add)
             {
                 if (numberOfEach[index] < 4)
                 {
                     number = 1;
-                    Instantiate(selectedCard, selectedCard.transform.parent);
+                addedCards.Add(card);
+                   // Instantiate(selectedCard, selectedCard.transform.parent);
                 }
                 else
                 {
                     Debug.Log("Too many of this card in deck");
                 }
-                selectedCard.GetComponent<Card>().Select();
+                //selectedCard.GetComponent<Card>().Select();
             }
             else if (numberOfEach[index] > 0)
             {
                 number = -1;
-                selectedCard.SetActive(false);
+               // selectedCard.SetActive(false);
             }
             else
             {
                 Debug.Log("No type of this card in deck");
-                selectedCard.SetActive(false);
+               // selectedCard.SetActive(false);
             }
             numberOfEach[index] += number;
-        }
-        else
-        {
-            Debug.Log("No card selected");
-        }
-   
 
     }
 
