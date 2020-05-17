@@ -11,6 +11,7 @@ TagManager:
   - Patio
   - MainCanvas
   - FullGrass
+  - LiquidNitro
   layers:
   - Default
   - TransparentFX
