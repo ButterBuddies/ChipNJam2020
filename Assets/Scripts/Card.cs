@@ -79,6 +79,10 @@ public class Card : MonoBehaviour
                         }
                         break;
 
+                    case "2x4":
+                        GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
+                        break;
+
                     case null:
                         Debug.Log("Invalid card type");
                         break;
