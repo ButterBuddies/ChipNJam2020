@@ -1532,7 +1532,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
       propertyPath: numSprinklers
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
       propertyPath: numLawnF
@@ -1548,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
       propertyPath: numPorchFlower
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
       propertyPath: numPlantFood
@@ -1564,7 +1564,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19542296, guid: 34f7a3f7703afb34188318f211595cf1, type: 3}
       propertyPath: numBuffout
-      value: 14
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192279925486560360, guid: 34f7a3f7703afb34188318f211595cf1,
+        type: 3}
+      propertyPath: numberOfEach.Array.data[1]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6192279925486560361, guid: 34f7a3f7703afb34188318f211595cf1,
         type: 3}

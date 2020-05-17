@@ -49,15 +49,20 @@ public class Deck : MonoBehaviour
    public void MakeDeck(Transform transform)
     {   //make deck based on the side deck numbers
         //im going to regret this code in the morn tomorrow
-        numberOfEach[0] = sideDeck.numSprinklers;
-        numberOfEach[1] = sideDeck.numPorchFlower;
-        numberOfEach[2] = sideDeck.num2x4;
-        numberOfEach[3] = sideDeck.numBuffout;
-        numberOfEach[4] = sideDeck.numLawnF;
-        numberOfEach[5] = sideDeck.numPlantFood;
-        numberOfEach[6] = sideDeck.numInce;
-        numberOfEach[7] = sideDeck.numLiqNitro;
-        numberOfEach[8] = sideDeck.numGMO;
+
+        if (gameObject.tag != "SideDeck")
+        {  //if this is not the sidedeck, then get your values from it
+            numberOfEach[0] = sideDeck.numSprinklers;
+            numberOfEach[1] = sideDeck.numPorchFlower;
+            numberOfEach[2] = sideDeck.num2x4;
+            numberOfEach[3] = sideDeck.numBuffout;
+            numberOfEach[4] = sideDeck.numLawnF;
+            numberOfEach[5] = sideDeck.numPlantFood;
+            numberOfEach[6] = sideDeck.numInce;
+            numberOfEach[7] = sideDeck.numLiqNitro;
+            numberOfEach[8] = sideDeck.numGMO;
+            
+        }
 
 
         for (int i = 0; i < listOfCardPrefabs.Count; i++)
