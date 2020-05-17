@@ -33,8 +33,7 @@ public class Card : MonoBehaviour
         if (!played)
         {
             string scene = SceneManager.GetActiveScene().name;
-            if (scene == "SarahsScene")
-            {
+            if (FindObjectOfType<GamePhaseManager>() != null) { 
                 switch (myName)
                 {
                     case "Sprinkler":
@@ -77,6 +76,10 @@ public class Card : MonoBehaviour
                             obj.transform.parent = theMainCanvas.transform;
                             obj.transform.localScale = new Vector3(1, 1, 1);
                         }
+                        break;
+
+                    case "2x4":
+                        GameObject.FindGameObjectWithTag("Patio").GetComponent<Health>().health += 25;
                         break;
 
                     case null:
