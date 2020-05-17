@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         hand = GetComponent<Hand>();
-        deck = GameObject.FindGameObjectWithTag("DeckOfCards").GetComponent<Deck>();
+        deck = FindObjectOfType<Deck>();
         audio = GetComponent<AudioSource>();
     }
 
