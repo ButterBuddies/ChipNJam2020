@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveCount: 2
+  damageMultiplier: 1
   player: {fileID: 0}
 --- !u!4 &40589217
 Transform:
@@ -723,56 +724,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861988819}
   m_CullTransparentMesh: 0
---- !u!1 &1089704701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1089704703}
-  - component: {fileID: 1089704702}
-  m_Layer: 0
-  m_Name: DeckOfCards
-  m_TagString: DeckOfCards
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1089704702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089704701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330e3e97cb3e4ed4bb55f588b5894aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listOfCardPrefabs:
-  - {fileID: 4943297266053977197, guid: a393b7f53e8224c4e82965ab829bb0cc, type: 3}
-  - {fileID: 3647397650716868575, guid: c3104ebbc95e26e4d9eb7737f6a076f4, type: 3}
-  - {fileID: 4363693971985882551, guid: b6918b4a6e68df741b664d94a8327c3d, type: 3}
-  - {fileID: 1255702740130832597, guid: c768178acfc88d942af1dae5d97979d0, type: 3}
-  numberOfEach: 04000000040000000400000004000000
-  selectedCard: {fileID: 0}
---- !u!4 &1089704703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089704701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1185926437 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8080056119293530426, guid: d3c9457d3dd53694dab6a6bb0ebc8faf,
@@ -1267,6 +1218,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6918b4a6e68df741b664d94a8327c3d, type: 3}
+--- !u!1001 &2699273160026920314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2699273161112094596, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: listOfCardPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1255702740130832597, guid: aeb6cd99f6474d84592c261bd78bc1a3,
+        type: 3}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094597, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699273161112094599, guid: e3076093cae4c6443b63851b16340ce9,
+        type: 3}
+      propertyPath: m_Name
+      value: DeckOfCards
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3076093cae4c6443b63851b16340ce9, type: 3}
 --- !u!222 &7341106725423991672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1607,6 +1633,7 @@ MonoBehaviour:
   numBears: 0
   spawnerWidth: 6
   doneSpawning: 0
+  globalMoveSpeedMultiplier: 1
 --- !u!1 &7341106726404807824
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,8 +33,7 @@ public class Card : MonoBehaviour
         if (!played)
         {
             string scene = SceneManager.GetActiveScene().name;
-            if (scene == "SarahsScene")
-            {
+            if (FindObjectOfType<GamePhaseManager>() != null) { 
                 switch (myName)
                 {
                     case "Sprinkler":
