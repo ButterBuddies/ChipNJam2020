@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         transform.Translate(direction * Time.deltaTime * (tempMoveSpeed*moveSpeedMultiplier));
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         objectToAttack = collision.gameObject.GetComponent<Health>();
         if(objectToAttack != null)
