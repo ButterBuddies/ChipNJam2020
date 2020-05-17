@@ -18,11 +18,15 @@ public class Card : MonoBehaviour
     bool selected = false;
     private GameObject theMainCanvas;
     Deck deck;
+    SideDeck sideDeck;
 
     public void Start()
     {
         theMainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
         deck = FindObjectOfType<Deck>();
+        string scene = SceneManager.GetActiveScene().name;
+        if (scene.Contains("CardDeckBuilding"))
+            sideDeck = GameObject.FindGameObjectWithTag("SideDeck").GetComponent<SideDeck>();
     }
 
     public Card(string newName)
@@ -127,7 +131,7 @@ public class Card : MonoBehaviour
                 deck.PlayNoise();
                 gameObject.SetActive(false);
                 //should remove this card from the player hand, now that it has been used?
-            }else if(scene == "CardDeckBuilding")
+            }else if(scene.Contains("CardDeckBuilding"))
             {
                 Select();
             }
@@ -139,11 +143,22 @@ public class Card : MonoBehaviour
         selected = !selected;
         if (selected)
         {
-            FindObjectOfType<Deck>().selectedCard = this.gameObject;
+            if (sideDeck.countCards < sideDeck.maxDeckSize)
+            {
+                FindObjectOfType<Deck>().selectedCard = this.gameObject;
+                gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .5f);
+                sideDeck.countCards++;
+                sideDeck.AddCardCount(this.myName);
+            }
+            else
+                selected = !selected;
         }
         else
         {
             FindObjectOfType<Deck>().selectedCard = null;
+            gameObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            sideDeck.countCards--;
+            sideDeck.RemoveCardCount(this.myName);
         }
     }
 

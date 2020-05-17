@@ -11,32 +11,24 @@ public class Deck : MonoBehaviour
     public List<int> numberOfEach = new List<int>();
     public int levelNumber = 1;
     AudioSource audio;
+    private SideDeck sideDeck;
 
     public GameObject selectedCard;
 
     private void Awake()
     {
-        Deck[] obj = FindObjectsOfType<Deck>();
-        if (obj.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
+        sideDeck = FindObjectOfType<SideDeck>();
+        //Deck[] obj = FindObjectsOfType<Deck>();
+        //if (obj.Length > 1)
+        //{
+        //    Destroy(this.gameObject);
+        //}
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     { //just adding a bunch of cards for now, will setup a initialize deck later
-      //cards.Add(new Card("a"));
-      //cards.Add(new Card("b"));
-      //cards.Add(new Card("c"));
-      //cards.Add(new Card("d"));
-      //cards.Add(new Card("e"));
-      //cards.Add(new Card("f"));
-      //cards.Add(new Card("g"));
-      //cards.Add(new Card("h"));
-      //cards.Add(new Card("i"));
-      //cards.Add(new Card("j"));
       // MakeRandomDeck();
         audio = GetComponent<AudioSource>();
     }
@@ -55,8 +47,20 @@ public class Deck : MonoBehaviour
     }
 
    public void MakeDeck(Transform transform)
-    {
-        for(int i = 0; i < listOfCardPrefabs.Count; i++)
+    {   //make deck based on the side deck numbers
+        //im going to regret this code in the morn tomorrow
+        numberOfEach[0] = sideDeck.numSprinklers;
+        numberOfEach[1] = sideDeck.numPorchFlower;
+        numberOfEach[2] = sideDeck.num2x4;
+        numberOfEach[3] = sideDeck.numBuffout;
+        numberOfEach[4] = sideDeck.numLawnF;
+        numberOfEach[5] = sideDeck.numPlantFood;
+        numberOfEach[6] = sideDeck.numInce;
+        numberOfEach[7] = sideDeck.numLiqNitro;
+        numberOfEach[8] = sideDeck.numGMO;
+
+
+        for (int i = 0; i < listOfCardPrefabs.Count; i++)
         {
             for (int j = 0; j < numberOfEach[i]; j++)
             {

@@ -15,16 +15,16 @@ public class EditorManager : MonoBehaviour
         deck.MakeDeck(deckPanel.transform);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
 
-    public void ButtonCall(bool add)
-    {
-        deck.EditDeck(add);
-    }
+    //public void ButtonCall(bool add)
+    //{
+    //    deck.EditDeck(add);
+    //}
 
     public void NextLevel()
     {

@@ -12,6 +12,8 @@ TagManager:
   - MainCanvas
   - FullGrass
   - LiquidNitro
+  - SideDeck
+  - CountText
   layers:
   - Default
   - TransparentFX
